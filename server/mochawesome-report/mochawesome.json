@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-05-08T10:39:35.466Z",
+    "end": "2023-05-08T10:39:35.472Z",
+    "duration": 6,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "eb856caf-c7c0-4e81-a474-51da5a12797d",
+      "title": "",
+      "fullFile": "C:\\Users\\boi\\Desktop\\CLEAN\\diplom_back\\server\\tests\\test-one.js",
+      "file": "\\tests\\test-one.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0112cb15-5127-40de-a5a3-222addb7dfbe",
+          "title": "getCelcius",
+          "fullFile": "C:\\Users\\boi\\Desktop\\CLEAN\\diplom_back\\server\\tests\\test-one.js",
+          "file": "\\tests\\test-one.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should convert farenheit to celcius for all values in an array",
+              "fullTitle": "getCelcius should convert farenheit to celcius for all values in an array",
+              "timedOut": false,
+              "duration": 1,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "expect(getCelcius(6, 10)).to.equal(16);\nexpect(getCelcius(242, 300)).to.equal(542);\nexpect(getCelcius(3, 0)).to.equal(3);",
+              "err": {},
+              "uuid": "1608d918-12fc-4d10-9f12-e95993aa2d8f",
+              "parentUUID": "0112cb15-5127-40de-a5a3-222addb7dfbe",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1608d918-12fc-4d10-9f12-e95993aa2d8f"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}

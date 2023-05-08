@@ -11,15 +11,20 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "chai": "^4.3.7",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
+    "exec": "^0.2.1",
     "express": "^4.17.1",
     "express-validator": "^6.11.1",
     "jsonwebtoken": "^8.5.1",
+    "mocha": "^10.2.0",
     "mongodb": "^3.6.8",
     "mongoose": "^5.12.11",
     "nodemailer": "^6.6.1",
+    "npm": "^9.6.6",
+    "shell": "^0.5.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
