@@ -77,7 +77,9 @@ class TaskService {
         console.log(`File name: ${testName}`);
     }
 
-    /*async runTest(id, args, code){
+ /* OLD
+
+  async runTest(id, args, code){
         const task = await TaskModel.findOne({id:id}); // По id получаем задачу
         // const testName = task.testName; // По id получаем имя файла с тестами
         const clientData = JSON.parse(args + code); // Из args и code создаем строку

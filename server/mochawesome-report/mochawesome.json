@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 0,
     "failures": 0,
-    "start": "2023-05-08T10:39:35.466Z",
-    "end": "2023-05-08T10:39:35.472Z",
-    "duration": 6,
+    "start": "2023-05-08T23:54:42.125Z",
+    "end": "2023-05-08T23:54:42.135Z",
+    "duration": 10,
     "testsRegistered": 1,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "eb856caf-c7c0-4e81-a474-51da5a12797d",
+      "uuid": "c8e57d55-6b2d-4d9f-bc69-9877208465a7",
       "title": "",
       "fullFile": "C:\\Users\\boi\\Desktop\\CLEAN\\diplom_back\\server\\tests\\test-one.js",
       "file": "\\tests\\test-one.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "0112cb15-5127-40de-a5a3-222addb7dfbe",
+          "uuid": "c7d9045b-084c-41d6-b07a-7ffe708f887a",
           "title": "getCelcius",
           "fullFile": "C:\\Users\\boi\\Desktop\\CLEAN\\diplom_back\\server\\tests\\test-one.js",
           "file": "\\tests\\test-one.js",
@@ -38,7 +38,7 @@
               "title": "should convert farenheit to celcius for all values in an array",
               "fullTitle": "getCelcius should convert farenheit to celcius for all values in an array",
               "timedOut": false,
-              "duration": 1,
+              "duration": 2,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "expect(getCelcius(6, 10)).to.equal(16);\nexpect(getCelcius(242, 300)).to.equal(542);\nexpect(getCelcius(3, 0)).to.equal(3);",
               "err": {},
-              "uuid": "1608d918-12fc-4d10-9f12-e95993aa2d8f",
-              "parentUUID": "0112cb15-5127-40de-a5a3-222addb7dfbe",
+              "uuid": "5f2aac2d-9bb3-43ee-bfa0-44e5f95eab9a",
+              "parentUUID": "c7d9045b-084c-41d6-b07a-7ffe708f887a",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "1608d918-12fc-4d10-9f12-e95993aa2d8f"
+            "5f2aac2d-9bb3-43ee-bfa0-44e5f95eab9a"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 1,
+          "duration": 2,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

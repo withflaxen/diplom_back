@@ -115,10 +115,11 @@ class TaskController {
                 code, // код задачи, вводимый пользователем
             });
 
-            await fs.readFile("mochawesome-report/mochawesome.html", "utf8", (err, data) => {
+            await fs.readFile("mochawesome-report/mochawesome.json", "utf8", (err, data) => {
                 if (err) { throw err; } // Если произошла ошибка при чтении файла, выбрасываем исключение
                 res.send(data); // Если нет ошибки при чтении файла, отправляем его содержимое на фронт
             });
+
         } catch (e) {
             console.error(error);
             res.status(500).send("Произошла ошибка при запуске тестов");
