@@ -43,14 +43,32 @@ class TaskController {
         }
     }
 
+    // Метод для получения решений задачи по id
+    async getTaskSolutions(req, res) {
+        try {
+            const {id} = req.body;
+            const solutions = await taskService.getTaskSolutions(id);
+
+            // Если задача не найдена, выбрасываем исключение
+            if (!solutions) {
+                throw new Error("Решений не существует");
+            }
+
+            return res.json(solutions); // Отправляем задачу на фронт
+        } catch (e) {
+            // Обработка ошибок и возврат соответствующего ответа
+            console.error(e);
+            res.status(404).send(e.message);
+        }
+    }
+
     // Метод для обработки HTTP запроса на создание новой задачи
     async createTask(req, res) {
         try {
             // Получаем данные для новой задачи из тела запроса
-            const {id, title, description, testName, difficulty, examples} = req.body;
+            const {id, title, description, testName, difficulty, solutions, name, args} = req.body;
 
             // Вызываем метод createTask из сервиса taskService и получаем объект task
-            const task = await taskService.createTask(id, title, description, testName, difficulty, examples);
 
             // Отправляем объект task в ответе
             return res.json(task);
