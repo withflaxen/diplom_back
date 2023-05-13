@@ -126,7 +126,7 @@ class TaskController {
     async runTest(req, res) {
         try {
             const {id, args, code} = req.body;
-            const task = taskService.runTest(id, args, code);
+            const task = await taskService.runTest(id, args, code);
 
             const clientData = JSON.stringify({
                 args, // аргументы функции в задаче
