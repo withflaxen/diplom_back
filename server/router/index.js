@@ -22,6 +22,8 @@ router.get('/activate/:link', userController.activate);
 router.get('/refresh', userController.refresh);
 // router.get('/users', authMiddleware, userController.getUsers);
 router.get('/users', userController.getUsers);
+
+
 router.post('/test', taskController.runTest);
 router.post('/createTask', taskController.createTask);
 router.post('/updateTask', taskController.updateTask);

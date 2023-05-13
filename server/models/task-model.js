@@ -11,7 +11,6 @@ const TaskSchema = new Schema({
     difficulty: {type: String, enum: ["easy", "medium", "hard"], required: false}, // Поле для сложности задачи
     examples: [String], // массив строк с примерами решений
     likes: [Number] // массив чисел для хранения id пользователей, лайкнувших задачу
-
     // solutions: {} // массив добавить новую модель для решений [SolutionModel]
 });
 

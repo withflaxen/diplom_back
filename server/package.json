@@ -25,6 +25,7 @@
     "nodemailer": "^6.6.1",
     "npm": "^9.6.6",
     "shell": "^0.5.1",
+    "shelljs": "^0.8.5",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
