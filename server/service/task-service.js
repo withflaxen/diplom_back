@@ -1,6 +1,8 @@
 const TaskModel = require("../models/task-model");
+const SolutionModel = require("../models/solution-model");
 const shell = require("shelljs");
-const fs = require("fs"); // Импорт модели для задачи
+const fs = require("fs");
+const {log} = require("shelljs/src/common"); // Импорт модели для задачи
 
 // Создание сервиса для задачи
 class TaskService {
@@ -22,17 +24,36 @@ class TaskService {
         return task; // Отправляем задачу
     }
 
-    async createTask(id, title, description, testName, difficulty, examples) {
+    // Метод для получения решений задачи по id
+    async getTaskSolutions(id) {
+        const task = await TaskModel.findOne({id: id}); // Находим задачу в базе данных по id
+
+        // Если задача не найдена, выбрасываем исключение
+        if (!task) {
+            throw new Error("Задача с таким id не существует");
+        }
+
+        let solutions = [];
+
+        for (let id of task.solutions){
+            const solution = await SolutionModel.findOne({id});
+            solutions.push(solution);
+        }
+
+        return solutions; // Вернуть массив объектов с решениями
+    }
+
+    async createTask(id, title, description, testName, difficulty, solutions, name, args) {
         // Создаем новую задачу в базе данных с помощью модели
-        const task = await TaskModel.create({id, title, description, testName, difficulty, examples});
+        const task = await TaskModel.create({id, title, description, testName, difficulty, solutions, name, args});
 
         // Возвращаем созданную задачу
         return task;
     }
 
      // Метод для обновления существующей задачи по id
-     async updateTask(id, title, description, testName, difficulty) {
-         const task = await TaskModel.findOne({testNameid: id});
+     async updateTask(id, title, description, testName, difficulty, solutions, name, args) {
+         const task = await TaskModel.findOne({id: id});
 
          // Если задача не найдена, выбрасываем исключение
          if (!task) {
@@ -43,8 +64,11 @@ class TaskService {
         if (description) task.description = description;
         if (testName) task.testName = testName;
         if (difficulty) task.difficulty = difficulty;
+        if (solutions) task.solutions = solutions;
+        if (name) task.name = name;
+        if (args) task.solutions = args;
 
-         return await task.save(); // Возвращаем обновленную задачу
+        return await task.save(); // Возвращаем обновленную задачу
      }
 
     // Метод для удаления существующей задачи по id
@@ -60,14 +84,6 @@ class TaskService {
         return task; // Возвращаем удаленную задачу
     }
 
-   /* async runTest(testName){
-        const abc = async () => {
-            await shell.exec(`npm run ${testName}`);
-            console.log(`NEW NEW NEW File name: ${testName}`);
-        }
-        abc();
-    }*/
-
     async runTest(id, args, code){
         const task = await TaskModel.findOne({id:id}); // По id получаем задачу
         const testName = task.testName; // По id получаем имя теста
@@ -76,23 +92,6 @@ class TaskService {
         await shell.exec(`mocha run tests/${testName} --reporter mochawesome ${clientData}`);
         console.log(`File name: ${testName}`);
     }
-
- /* OLD
-
-  async runTest(id, args, code){
-        const task = await TaskModel.findOne({id:id}); // По id получаем задачу
-        // const testName = task.testName; // По id получаем имя файла с тестами
-        const clientData = JSON.parse(args + code); // Из args и code создаем строку
-
-        // Выполняем тесты
-        const abc = async () => {
-            await shell.exec(`npm ${testName}`);
-            console.log(`NEW NEW NEW File name: ${testName}`);
-        }
-        abc();
-
-        // shell.exec(`npm run ${task.testName}`); // Запускаем тесты
-    }*/
 }
 
 // Экспорт контроллера для задачи

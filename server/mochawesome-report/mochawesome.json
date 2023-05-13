@@ -1,15 +1,15 @@
 {
   "stats": {
     "suites": 1,
-    "tests": 1,
-    "passes": 1,
+    "tests": 3,
+    "passes": 0,
     "pending": 0,
-    "failures": 0,
-    "start": "2023-05-08T23:54:42.125Z",
-    "end": "2023-05-08T23:54:42.135Z",
+    "failures": 3,
+    "start": "2023-05-13T12:37:42.693Z",
+    "end": "2023-05-13T12:37:42.703Z",
     "duration": 10,
-    "testsRegistered": 1,
-    "passPercent": 100,
+    "testsRegistered": 3,
+    "passPercent": 0,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "c8e57d55-6b2d-4d9f-bc69-9877208465a7",
+      "uuid": "d95d4181-c6e9-4d61-b419-0fa4c10a6c34",
       "title": "",
       "fullFile": "C:\\Users\\boi\\Desktop\\CLEAN\\diplom_back\\server\\tests\\test-one.js",
       "file": "\\tests\\test-one.js",
@@ -27,40 +27,90 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "c7d9045b-084c-41d6-b07a-7ffe708f887a",
-          "title": "getCelcius",
+          "uuid": "00eae8a0-4174-4a20-aeed-a6d5574270d2",
+          "title": "getSum",
           "fullFile": "C:\\Users\\boi\\Desktop\\CLEAN\\diplom_back\\server\\tests\\test-one.js",
           "file": "\\tests\\test-one.js",
           "beforeHooks": [],
           "afterHooks": [],
           "tests": [
             {
-              "title": "should convert farenheit to celcius for all values in an array",
-              "fullTitle": "getCelcius should convert farenheit to celcius for all values in an array",
+              "title": "1should convert farenheit to celcius for all values in an array",
+              "fullTitle": "getSum 1should convert farenheit to celcius for all values in an array",
               "timedOut": false,
               "duration": 2,
-              "state": "passed",
-              "speed": "fast",
-              "pass": true,
-              "fail": false,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
               "pending": false,
               "context": null,
-              "code": "expect(getCelcius(6, 10)).to.equal(16);\nexpect(getCelcius(242, 300)).to.equal(542);\nexpect(getCelcius(3, 0)).to.equal(3);",
-              "err": {},
-              "uuid": "5f2aac2d-9bb3-43ee-bfa0-44e5f95eab9a",
-              "parentUUID": "c7d9045b-084c-41d6-b07a-7ffe708f887a",
+              "code": "expect(getCelcius(6, 10)).to.equal(16);",
+              "err": {
+                "message": "AssertionError: expected -4 to equal 16",
+                "estack": "AssertionError: expected -4 to equal 16\n    at Context.<anonymous> (tests\\test-one.js:25:38)\n    at processImmediate (node:internal/timers:466:21)",
+                "diff": "- -4\n+ 16\n"
+              },
+              "uuid": "46eb6a45-6b8f-429e-ac04-0d2225b024fc",
+              "parentUUID": "00eae8a0-4174-4a20-aeed-a6d5574270d2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "2should convert farenheit to celcius for all values in an array",
+              "fullTitle": "getSum 2should convert farenheit to celcius for all values in an array",
+              "timedOut": false,
+              "duration": 1,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "expect(getCelcius(242, 300)).to.equal(542);",
+              "err": {
+                "message": "AssertionError: expected -58 to equal 542",
+                "estack": "AssertionError: expected -58 to equal 542\n    at Context.<anonymous> (tests\\test-one.js:28:41)\n    at processImmediate (node:internal/timers:466:21)",
+                "diff": "- -58\n+ 542\n"
+              },
+              "uuid": "fcfa222b-edf9-4193-ba97-f8fc9b36f2fe",
+              "parentUUID": "00eae8a0-4174-4a20-aeed-a6d5574270d2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "3should convert farenheit to celcius for all values in an array",
+              "fullTitle": "getSum 3should convert farenheit to celcius for all values in an array",
+              "timedOut": false,
+              "duration": 0,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "expect(getCelcius(3, 5)).to.equal(8);",
+              "err": {
+                "message": "AssertionError: expected -2 to equal 8",
+                "estack": "AssertionError: expected -2 to equal 8\n    at Context.<anonymous> (tests\\test-one.js:31:37)\n    at processImmediate (node:internal/timers:466:21)",
+                "diff": "- -2\n+ 8\n"
+              },
+              "uuid": "05034b8a-5dfd-4a3a-a1e3-4a596f18bd51",
+              "parentUUID": "00eae8a0-4174-4a20-aeed-a6d5574270d2",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [
-            "5f2aac2d-9bb3-43ee-bfa0-44e5f95eab9a"
+          "passes": [],
+          "failures": [
+            "46eb6a45-6b8f-429e-ac04-0d2225b024fc",
+            "fcfa222b-edf9-4193-ba97-f8fc9b36f2fe",
+            "05034b8a-5dfd-4a3a-a1e3-4a596f18bd51"
           ],
-          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 2,
+          "duration": 3,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
