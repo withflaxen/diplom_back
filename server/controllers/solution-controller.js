@@ -16,6 +16,17 @@ class SolutionController {
         }
     }
 
+  /*  async createSolution(req, res) {
+        try {
+            const {id, likes, users, comments, taskID} = req.body; //
+            const solution = await solutionService.createSolution(id, likes, users, comments, taskID); //
+            return res.json(solution);
+        } catch (e) {
+            console.error(e);
+            res.status(500).send("Произошла ошибка при создании задачи");
+        }
+    }*/
+
     async deleteSolution(req, res) {
         try {
             const {id, taskID} = req.body; //
@@ -76,8 +87,8 @@ class SolutionController {
     // Метод для добавления комментария
     async addComment(req, res) {
         try {
-            const {id, solutionID, userID, comment} = req.body;
-            const com = await solutionService.addComment(id, solutionID, userID, comment);
+            const {solutionID, username, comment} = req.body;
+            const com = await solutionService.addComment(solutionID, username, comment);
             return res.json(com);
         } catch (e) {
             console.error(e);

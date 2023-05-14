@@ -40,6 +40,23 @@ class SolutionService {
         return solution;
     }
 
+  /*  // Создание решения и добавление к задаче
+    async createSolution(id, likes, users, comments, taskID) {
+
+        const findSolution = await SolutionModel.findOne({id: id});
+        if (findSolution) {
+            throw new Error("Решение с таким id уже существует");
+        }
+
+        const solution = await SolutionModel.create({id, likes, users, comments, taskID});
+        const task = await TaskModel.findOne({id: taskID});
+
+        await task.solutions.push(solution.id); // Пушим id решения в массив к задаче
+        await task.save()
+
+        return solution;
+    }*/
+
     // Удаление решения и удаление из задачи
     async deleteSolution(id, taskID) {
 
@@ -92,6 +109,7 @@ class SolutionService {
         return solution; // Отправляем задачу
     }
 
+/*
     // Метод добавления комментария к решению
     async addComment(id, solutionID, userID, comment) {
         const solution = await SolutionModel.findOne({id: solutionID});
@@ -105,6 +123,29 @@ class SolutionService {
         }
 
         const com = {id, solutionID, userID, comment};
+        await solution.comments.push(com);
+        await solution.save();
+
+        return com;
+    }
+*/
+
+    // Метод добавления комментария к решению
+    async addComment(solutionID, username, comment) {
+
+        const id = Math.floor(Math.random()*10000);
+
+        const solution = await SolutionModel.findOne({id: solutionID});
+        if (!solution) {
+            throw new Error("Решения с таким id не существует");
+        }
+        const isExisted = solution.comments.find(element => element.id === id)
+
+        if (isExisted) {
+            throw new Error("Комментарий с таким id уже существует");
+        }
+
+        const com = {id, solutionID, username, comment};
         await solution.comments.push(com);
         await solution.save();
 
