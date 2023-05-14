@@ -7,9 +7,9 @@ const SolutionModel = require("../models/solution-model");
 class SolutionController {
     async createSolution(req, res) {
         try {
-            const {id, likes, users, comments, taskID} = req.body; //
-            const solution = await solutionService.createSolution(id, likes, users, comments, taskID); //
-            return res.json(solution);
+            const {username, taskID, solution} = req.body; //
+            const solutions = await solutionService.createSolution(username, taskID, solution); //
+            return res.json(solutions);
         } catch (e) {
             console.error(e);
             res.status(500).send("Произошла ошибка при создании задачи");

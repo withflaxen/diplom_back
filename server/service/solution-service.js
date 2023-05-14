@@ -1,4 +1,6 @@
 const SolutionModel = require('../models/solution-model');
+const TaskModel = require('../models/task-model');
+
 
 /*
  * в задачах хранится массив с айди решений для этой задачи
@@ -24,38 +26,41 @@ class SolutionService {
     }
 
     // Создание решения и добавление к задаче
-    async createSolution(id, likes, users, comments, taskID) {
+    async createSolution(username, taskID, solution) {
+
+        const id = Math.floor(Math.random() * 10000);
 
         const findSolution = await SolutionModel.findOne({id: id});
         if (findSolution) {
             throw new Error("Решение с таким id уже существует");
         }
 
-        const solution = await SolutionModel.create({id, likes, users, comments, taskID});
+        const solutions = await SolutionModel.create({id, username, taskID, solution});
         const task = await TaskModel.findOne({id: taskID});
 
-        await task.solutions.push(solution.id); // Пушим id решения в массив к задаче
+        await task.users.push(username);
+        await task.solutions.push(solutions.id); // Пушим id решения в массив к задаче
         await task.save()
 
-        return solution;
+        return solutions;
     }
 
-  /*  // Создание решения и добавление к задаче
-    async createSolution(id, likes, users, comments, taskID) {
+    /*  // Создание решения и добавление к задаче
+      async createSolution(id, likes, users, comments, taskID) {
 
-        const findSolution = await SolutionModel.findOne({id: id});
-        if (findSolution) {
-            throw new Error("Решение с таким id уже существует");
-        }
+          const findSolution = await SolutionModel.findOne({id: id});
+          if (findSolution) {
+              throw new Error("Решение с таким id уже существует");
+          }
 
-        const solution = await SolutionModel.create({id, likes, users, comments, taskID});
-        const task = await TaskModel.findOne({id: taskID});
+          const solution = await SolutionModel.create({id, likes, users, comments, taskID});
+          const task = await TaskModel.findOne({id: taskID});
 
-        await task.solutions.push(solution.id); // Пушим id решения в массив к задаче
-        await task.save()
+          await task.solutions.push(solution.id); // Пушим id решения в массив к задаче
+          await task.save()
 
-        return solution;
-    }*/
+          return solution;
+      }*/
 
     // Удаление решения и удаление из задачи
     async deleteSolution(id, taskID) {
@@ -109,31 +114,31 @@ class SolutionService {
         return solution; // Отправляем задачу
     }
 
-/*
-    // Метод добавления комментария к решению
-    async addComment(id, solutionID, userID, comment) {
-        const solution = await SolutionModel.findOne({id: solutionID});
-        if (!solution) {
-            throw new Error("Решения с таким id не существует");
+    /*
+        // Метод добавления комментария к решению
+        async addComment(id, solutionID, userID, comment) {
+            const solution = await SolutionModel.findOne({id: solutionID});
+            if (!solution) {
+                throw new Error("Решения с таким id не существует");
+            }
+            const isExisted = solution.comments.find(element => element.id === id)
+
+            if (isExisted) {
+                throw new Error("Комментарий с таким id уже существует");
+            }
+
+            const com = {id, solutionID, userID, comment};
+            await solution.comments.push(com);
+            await solution.save();
+
+            return com;
         }
-        const isExisted = solution.comments.find(element => element.id === id)
-
-        if (isExisted) {
-            throw new Error("Комментарий с таким id уже существует");
-        }
-
-        const com = {id, solutionID, userID, comment};
-        await solution.comments.push(com);
-        await solution.save();
-
-        return com;
-    }
-*/
+    */
 
     // Метод добавления комментария к решению
     async addComment(solutionID, username, comment) {
 
-        const id = Math.floor(Math.random()*10000);
+        const id = Math.floor(Math.random() * 10000);
 
         const solution = await SolutionModel.findOne({id: solutionID});
         if (!solution) {

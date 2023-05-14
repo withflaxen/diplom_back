@@ -8,6 +8,7 @@ const TaskSchema = new Schema({
     testName: {type: String, required: false}, // Поле для имени файла с тестами для задачи
     difficulty: {type: String, enum: ["easy", "medium", "hard"], required: false}, // Поле для сложности задачи
     solutions: [Number], // массив айди с решениями к задаче
+    users: [String], // массив айдишников пользователей, решивших задачу
     name: {type: String}, // имя функции
     args: [String] // аргументы функции
 });

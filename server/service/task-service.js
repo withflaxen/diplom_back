@@ -2,7 +2,8 @@ const TaskModel = require("../models/task-model");
 const SolutionModel = require("../models/solution-model");
 const shell = require("shelljs");
 const fs = require("fs");
-const {log} = require("shelljs/src/common"); // Импорт модели для задачи
+const {log} = require("shelljs/src/common");
+const UserModel = require("../models/user-model"); // Импорт модели для задачи
 
 // Создание сервиса для задачи
 class TaskService {
@@ -43,13 +44,27 @@ class TaskService {
         return solutions; // Вернуть массив объектов с решениями
     }
 
-    async createTask(id, title, description, testName, difficulty, solutions, name, args) {
+    async createTask(title, description, testName, difficulty, solutions, users, name, args) {
+
+        const id = Math.floor(Math.random() * 100000);
+
         // Создаем новую задачу в базе данных с помощью модели
-        const task = await TaskModel.create({id, title, description, testName, difficulty, solutions, name, args});
+        const task = await TaskModel.create({id, title, description, testName, difficulty, solutions, users, name, args});
 
         // Возвращаем созданную задачу
         return task;
     }
+
+    /*  async createTask(id, title, description, testName, difficulty, solutions, users, name, args) {
+
+      // const id = Math.floor(Math.random() * 100000);
+
+      // Создаем новую задачу в базе данных с помощью модели
+      const task = await TaskModel.create({id, title, description, testName, difficulty, solutions, users, name, args});
+
+      // Возвращаем созданную задачу
+      return task;
+  }*/
 
      // Метод для обновления существующей задачи по id
      async updateTask(id, title, description, testName, difficulty, solutions, name, args) {

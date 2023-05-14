@@ -66,9 +66,30 @@ class TaskController {
     async createTask(req, res) {
         try {
             // Получаем данные для новой задачи из тела запроса
-            const {id, title, description, testName, difficulty, solutions, name, args} = req.body;
+            const {title, description, testName, difficulty, solutions, users, name, args} = req.body;
 
             // Вызываем метод createTask из сервиса taskService и получаем объект task
+            const task = await taskService.createTask(title, description, testName, difficulty, solutions, users, name, args);
+
+            // Отправляем объект task в ответе
+            return res.json(task);
+        } catch (e) {
+            // Обработка ошибок и возврат соответствующего ответа
+            console.error(e);
+            res.status(500).send("Произошла ошибка при создании задачи");
+        }
+    }
+/*
+    // Метод для обработки HTTP запроса на создание новой задачи
+    async createTask(req, res) {
+        try {
+            // Получаем данные для новой задачи из тела запроса
+            const {id, title, description, testName, difficulty, solutions, users, name, args} = req.body;
+
+            // const id = Math.floor(Math.random() * 100000);
+            // Вызываем метод createTask из сервиса taskService и получаем объект task
+
+            const task = await taskService.createTask({id, title, description, testName, difficulty, solutions, users, name, args});
 
             // Отправляем объект task в ответе
             return res.json(task);
@@ -77,7 +98,8 @@ class TaskController {
             console.error(error);
             res.status(500).send("Произошла ошибка при создании задачи");
         }
-    }
+    }*/
+
 
     // Метод для обновления существующей задачи по id
     async updateTask(req, res) {
