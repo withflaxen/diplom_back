@@ -159,11 +159,9 @@ class SolutionService {
             throw new Error("Решения с таким id не существует");
         }
 
-        const commentIndex = solution.comments.indexOf(id);
-        if (commentIndex !== -1) {
-            await solution.comments.splice(commentIndex, 1);
-            await solution.save();
-        }
+        solution.comments = solution.comments.filter(e => e.id !== id);
+        await solution.save();
+
         return solution;
     }
 }
